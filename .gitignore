@@ -1,5 +1,30 @@
+# .NET
 bin/
 obj/
+*.user
+*.userosscache
+*.sln.docstates
+
+# IDE / VS
 .vs/
-.idea/
 .vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.opensdf
+*.sdf
+*.cachefile
+*.opendb
+*.db
+
+# Docker
+.dockerignore
+
+# Environment / Sensitive
+appsettings.Development.json
+*.pfx
+*.certificate
+*.json.user
+auth.json
