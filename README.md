@@ -1,28 +1,38 @@
-# Loan Management System - Backend (API)
+# Bank Loan Management - Backend 🏦
 
-API REST desarrollada con **.NET 10** bajo **Arquitectura Hexagonal**, integrada con persistencia local facilitada.
+API REST robusta desarrollada para la gestión de préstamos bancarios, centrada en la seguridad, escalabilidad y una alta mantenibilidad mediante principios de diseño modernos.
 
-## 🚀 Tecnologías y Arreglos Críticos
-- **.NET 10** (Sincronizado para máxima compatibilidad).
-- **SQLite**: Implementado por defecto (`LoanManagement.db`) para ejecución inmediata sin dependencias externas.
-- **JWT (Bearer)**: Sistema de autenticación real con roles (ADMIN/USER).
-- **OpenApi (Swagger)**: Configuración optimizada para evitar conflictos con el SDK 11.
+## 🏗️ Arquitectura
+El sistema sigue una **Arquitectura Hexagonal (Clean Architecture)** dividida en 4 capas:
+- **Domain:** Entidades de negocio (`User`, `Loan`) y reglas núcleo.
+- **Application:** Casos de uso, servicios y DTOs.
+- **Infrastructure:** Persistencia (SQLite) y repositorios.
+- **Api:** Controladores REST, autenticación JWT y configuración de arranque.
 
-## 🏗️ Cambios Recientes
-- **AuthController**: Endpoint `/api/auth/login` real integrado.
-- **Data Seeding**: Carga automática de usuarios de prueba al iniciar.
-- **Port Matching**: Backend configurado en el puerto **5000** fijo.
+## 🚀 Tecnologías
+- **.NET 10**: Última tecnología de Microsoft para APIs de alto rendimiento.
+- **Entity Framework Core 10**: ORM para gestión de datos.
+- **SQLite**: Motor de base de datos embebido para una ejecución local sin dependencias.
+- **JWT (JSON Web Tokens)**: Seguridad basada en tokens para autenticacion stateless.
+- **Auto-Seeding**: Inicialización automática de la base de datos y usuarios de prueba.
 
-## 🏃 Ejecución Local
-```bash
-dotnet run --project src/Api/LoanManagement.Api.csproj
-```
+## 🛠️ Cómo levantar la API
+1. Asegúrate de tener el SDK de .NET instalado.
+2. Navega al directorio del proyecto:
+   ```bash
+   cd src/Api
+   ```
+3. Ejecuta la aplicación:
+   ```bash
+   dotnet run
+   ```
+   *La API se levantará por defecto en `http://localhost:5000`.*
 
-## 🧪 Usuarios de Prueba (Auto-Seed)
+---
+
+## 🔗 Comunicación Full Stack
+Para que el frontend se comunique correctamente, esta API habilita **CORS** para el puerto `3000` y expone endpoints bajo el prefijo `/api`.
+
+## 🧪 Usuarios de Prueba (Pre-cargados)
 - **Admin:** `admin@test.com` / `123`
-- **User:** `usuario@test.com` / `123`
-
-## 🏗️ Docker
-```bash
-docker build -t loan-api .
-```
+- **Usuario:** `usuario@test.com` / `123`
