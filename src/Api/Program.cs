@@ -39,7 +39,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Database
 builder.Services.AddDbContext<LoanDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // DI
 builder.Services.AddScoped<ILoanRepository, LoanRepository>();
@@ -79,6 +79,13 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// Ensure Database is created and Seeded
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<LoanDbContext>();
+    dbContext.Database.EnsureCreated();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
