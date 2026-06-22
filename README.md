@@ -1,42 +1,26 @@
 # Loan Management System - Backend (API)
 
-API REST para la gestión de préstamos bancarios desarrollada con **.NET 10** bajo **Arquitectura Hexagonal**.
+API REST desarrollada con **.NET 10** bajo **Arquitectura Hexagonal**, integrada con persistencia local facilitada.
 
-## 🚀 Tecnologías
-- **.NET 10** (Preview 5)
-- **C# 13**
-- **Entity Framework Core**: ORM para persistencia.
-- **PostgreSQL**: Base de datos relacional.
-- **JWT (Bearer)**: Autenticación segura.
-- **xUnit + Moq**: Pruebas unitarias e integración.
+## 🚀 Tecnologías y Arreglos Críticos
+- **.NET 10** (Sincronizado para máxima compatibilidad).
+- **SQLite**: Implementado por defecto (`LoanManagement.db`) para ejecución inmediata sin dependencias externas.
+- **JWT (Bearer)**: Sistema de autenticación real con roles (ADMIN/USER).
+- **OpenApi (Swagger)**: Configuración optimizada para evitar conflictos con el SDK 11.
 
-## 🏗️ Arquitectura Hexagonal
-El proyecto está dividido en 4 capas para garantizar el desacoplamiento:
-1. **Domain:** Entidades de negocio y contratos de repositorio.
-2. **Application:** Casos de uso y lógica de orquestación.
-3. **Infrastructure:** Implementación de persistencia y servicios externos.
-4. **Api:** Controladores REST y configuración de seguridad.
-
-## ⚙️ Configuración
-Actualiza las cadenas de conexión en `src/Api/appsettings.json`:
-
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Database=LoanDb;Username=postgres;Password=postgres"
-  }
-}
-```
-
-## 🧪 Pruebas
-```bash
-dotnet test
-```
+## 🏗️ Cambios Recientes
+- **AuthController**: Endpoint `/api/auth/login` real integrado.
+- **Data Seeding**: Carga automática de usuarios de prueba al iniciar.
+- **Port Matching**: Backend configurado en el puerto **5000** fijo.
 
 ## 🏃 Ejecución Local
 ```bash
 dotnet run --project src/Api/LoanManagement.Api.csproj
 ```
+
+## 🧪 Usuarios de Prueba (Auto-Seed)
+- **Admin:** `admin@test.com` / `123`
+- **User:** `usuario@test.com` / `123`
 
 ## 🏗️ Docker
 ```bash
